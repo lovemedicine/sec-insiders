@@ -103,7 +103,7 @@ with create_session() as session:
 
 keys = csv_data[0].keys()
 
-with open('../data/training_data.csv', 'w', newline='') as output_file:
+with open('./data/training_data.csv', 'w', newline='') as output_file:
     dict_writer = csv.DictWriter(output_file, keys)
     dict_writer.writeheader()
     dict_writer.writerows(csv_data)
