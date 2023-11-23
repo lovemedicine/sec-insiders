@@ -26,7 +26,11 @@ python scripts/load_sec_form4_filings.py --num 10 --start_id 1
 
 It will take a long time to process the form 4s. Occasionally the script encounters an error after only some of the form 4s are processed for a particular company. You'll need to use your sqlite client to delete the transactions for that company and run the script again beginning with that company's id. See `scripts/load_sec_form4_filings.py` for a full list of arguments the script accepts.
 
-4. Once you've loaded enough transactions for your purposes, generate the training data:
+4. Once you've loaded enough transactions for your purposes, you can generate the training data.
+
+The training data script makes use of historical stock values, which can be obtained for free with the yfinance python module, but it also uses market capitalization data, which will be fetched from the FMP API. Yahoo Finance has a market cap value taken from the company's last quarterly report, but I found this value to be questionable. FMP's API has a free plan which allows you to make 250 requests/day which is the best available option I found, and this is what this script uses, though you'll see useful code for other options in `lib/stocks.py`. You'll need to sign up for an (FMP API key)(https://site.financialmodelingprep.com/developer/docs) and then copy `config.yml.default` to `config.yml` and paste your API key there.
+
+Then run the script to generate training data:
 
 ```
 python scripts/generate_training_data.py
