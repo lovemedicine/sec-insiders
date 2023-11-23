@@ -1,0 +1,6 @@
+*__pycache__*
+.venv/
+data/sec-insiders.db
+data/training_data.csv
+data/stock_perf_model.h5
+config.yml
